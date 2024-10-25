@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+
+ </style>
+</head>
+<body>
+
+    <script>
+         for(let u = 1; u<=10;u++){
+                    document.write(u);
+                    document.write('<br>');
+         } 
+         
+         let tab = 10;
+         document.write("<table border='1'>")
+         for(let t = 1; t<=10; t++){
+                    document.write("<tr>")
+                    document.write("<td>"+tab+"<td> <td>*<td> <td>"+t+"</td> <td> <td>=</td> <td>"+tab*t+"</td>")
+                    document.write("</tr>")                    
+         }
+         document.write("</table>")
+//while loop
+         let q = 1;
+         while (q<=6){
+          document.write("<h3>While Loop</h3>")
+          q++
+         }
+//do while loop
+         let o = 11;
+          do{
+              document.write("do while loop");
+              document.write("<br>")
+              o++
+            }
+      while(o<=17)
+
+
+
+    </script>                
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</body>
+</html>

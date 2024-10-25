@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+
+<style>
+ *{
+    margin: 0;
+    padding: 0;                
+ } 
+
+.accor{
+     background-color: black;
+     color: white; 
+     text-align: center;
+     padding: 20px 30px;              
+}
+
+.inner{
+display: none;
+}
+</style>
+
+<body>
+
+<div class="accor d1">View More</div>
+<div class="inner i1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat beatae maxime enim dolor velit officia rerum minus consequuntur harum qui nulla quas eum, labore voluptas expedita dolorem saepe non obcaecati.</div> 
+<div class="accor d2">View More</div>
+<div class="inner i2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat beatae maxime enim dolor velit officia rerum minus consequuntur harum qui nulla quas eum, labore voluptas expedita dolorem saepe non obcaecati.</div> 
+<div class="accor d3">View More</div>
+<div class="inner i3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat beatae maxime enim dolor velit officia rerum minus consequuntur harum qui nulla quas eum, labore voluptas expedita dolorem saepe non obcaecati.</div>
+ <div class="accor d4">View More</div>
+<div class="inner i4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat beatae maxime enim dolor velit officia rerum minus consequuntur harum qui nulla quas eum, labore voluptas expedita dolorem saepe non obcaecati.</div>               
+
+<script>
+   $(document).ready(function(){
+      for(let i = 0; i<=10; i++) {
+          $(".d"+i).click(function(){
+           $('.i'+i).slideToggle()         
+          })         
+      }                        
+   })                 
+</script>
+
+   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>                 
+</body>
+</html>
