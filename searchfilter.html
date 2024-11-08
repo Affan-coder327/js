@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+<input type="text" id="search" placeholder="SearchBox">
+<ul id='List'>
+                    <li>ms office</li>
+                    <li>html</li>
+                    <li>css</li>
+                    <li>js</li>
+                    <li>php</li>
+                    <li>laravel</li>
+                    <li>mySQL</li>
+</ul>
+
+<script>
+            document.getElementById('search').addEventListener('input', function(){
+                    let inputvalue = this.value.toLowerCase();
+                    let li_data = document.querySelectorAll("#List li");
+                    li_data.forEach((items)=> {
+                        console.log(items);
+                        let itemsdata = items.innerHTML.toLowerCase();
+                        if(itemsdata.includes(inputvalue)) {
+                            items.style.display = "block";
+                        } 
+                        else {
+                            items.style.display = "none";
+                        }
+                    })
+            })        
+</script>
+</body>
+
+</html>
