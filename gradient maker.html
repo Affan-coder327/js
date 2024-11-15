@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gradient-preview {
+            width: 100%;
+            height: 250px;
+            margin-bottom: 25px;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .gradient-maker {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            padding: 30px 25px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+        }
+
+        .input-color {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-color label {
+            flex: 1;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .input-color input[type="color"] {
+            border: none;
+            width: 50px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hex-code {
+            margin-left: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 12px 24px;
+            margin: 0 8px;
+            border: 1px solid #333;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #ffffff;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #1e3a8a;
+            color: #ffffff;
+        }
+
+        .buttons button.active {
+            background-color: #1e3a8a;
+            color: #ffffff;
+        }
+
+        .css-code {
+            margin-top: 20px;
+            background: #f3f3f3;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+        }
+
+        .css-code code {
+            color: #333;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gradient-preview" id="gradient-preview"></div>
+
+<div class="gradient-maker">
+    <div class="input-color">
+        <label>Color 1:</label>
+        <input type="color" id="color1" value="#ff0000">
+        <span class="hex-code" id="hex1">#ff0000</span>
+    </div>
+
+    <div class="input-color">
+        <label>Color 2:</label>
+        <input type="color" id="color2" value="#00ff00">
+        <span class="hex-code" id="hex2">#00ff00</span>
+    </div>
+
+    <div class="input-color">
+        <label>Color 3:</label>
+        <input type="color" id="color3" value="#0000ff">
+        <span class="hex-code" id="hex3">#0000ff</span>
+    </div>
+
+    <div class="buttons">
+        <button id="linear-btn" style="background-color: #1e3a8a; color: #ffffff;">Linear</button>
+        <button id="radial-btn">Radial</button>
+    </div>
+
+    <div class="css-code" id="css-code">
+     <code>linear-gradient(to right, #ff0000, #00ff00, #0000ff)</code>
+    </div>
+</div>
+
+<script>
+    let gradientType = 'linear';
+
+    function updateGradient() {
+        let color1 = document.getElementById('color1').value;
+        let color2 = document.getElementById('color2').value;
+        let color3 = document.getElementById('color3').value;
+        
+        document.getElementById('hex1').innerHTML = color1;
+        document.getElementById('hex2').innerHTML = color2;
+        document.getElementById('hex3').innerHTML = color3;
+
+        let gradient;
+        let csscode;
+        if (gradientType === 'linear') {
+            gradient = 'linear-gradient(to right, ' + color1 + ', ' + color2 + ', ' + color3 + ')';
+            csscode = 'linear-gradient(to right, ' + color1 + ', ' + color2 + ', ' + color3 + ')';
+        } else {
+            gradient = 'radial-gradient(circle, ' + color1 + ', ' + color2 + ', ' + color3 + ')';
+            csscode = 'radial-gradient(circle, ' + color1 + ', ' + color2 + ', ' + color3 + ')';
+        }
+
+        document.getElementById('gradient-preview').style.background = gradient;
+        document.getElementById('css-code').children[0].innerHTML = csscode;
+    }
+
+    document.getElementById('color1').addEventListener('input', updateGradient);
+    document.getElementById('color2').addEventListener('input', updateGradient);
+    document.getElementById('color3').addEventListener('input', updateGradient);
+
+    document.getElementById('linear-btn').addEventListener('click', function() {
+        gradientType = 'linear';
+        document.getElementById('linear-btn').style.backgroundColor = '#1e3a8a';
+        document.getElementById('linear-btn').style.color = '#ffffff';
+        document.getElementById('radial-btn').style.backgroundColor = '#ffffff';
+        document.getElementById('radial-btn').style.color = '#333';
+        updateGradient();
+    });
+
+    document.getElementById('radial-btn').addEventListener('click', function() {
+        gradientType = 'radial';
+        document.getElementById('radial-btn').style.backgroundColor = '#1e3a8a';
+        document.getElementById('radial-btn').style.color = '#ffffff';
+        document.getElementById('linear-btn').style.backgroundColor = '#ffffff';
+        document.getElementById('linear-btn').style.color = '#333';
+          updateGradient();
+    });
+
+      updateGradient();
+</script>
+
+</body>
+</html>
